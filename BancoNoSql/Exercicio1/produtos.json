@@ -25,6 +25,19 @@
         }
       ],
       "categoria": "Fruta"
+    },
+    {
+      "id": "3",
+      "nome": "Produto 3",
+      "descricao": "Descricao 3",
+      "preco": [
+        {
+          "id": 1,
+          "precoNormal": "R$45,00",
+          "precoOferta": "R$43,00"
+        }
+      ],
+      "categoria": "Higiene"
     }
   ]
 }
