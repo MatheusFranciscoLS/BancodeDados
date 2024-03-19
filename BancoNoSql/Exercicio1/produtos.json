@@ -1,0 +1,30 @@
+{
+  "produtos": [
+    {
+      "id": "1",
+      "nome": "Produto 1",
+      "descricao": "Descricao 1",
+      "preco": [
+        {
+          "id": 1,
+          "precoNormal": "R$20,00",
+          "precoOferta": "R$15,00"
+        }
+      ],
+      "categoria": "Fruta"
+    },
+    {
+      "id": "2",
+      "nome": "Produto 2",
+      "descricao": "Descricao 2",
+      "preco": [
+        {
+          "id": 1,
+          "precoNormal": "R$15,00",
+          "precoOferta": "R$10,00"
+        }
+      ],
+      "categoria": "Fruta"
+    }
+  ]
+}
