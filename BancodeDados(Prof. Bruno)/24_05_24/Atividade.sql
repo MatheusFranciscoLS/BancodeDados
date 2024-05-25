@@ -141,3 +141,18 @@ JOIN pedido p ON c.id_contato = p.id_contato;
 SELECT *
 FROM pedido
 WHERE data_pedido BETWEEN '2024-04-24' AND '2024-05-24';
+
+--ex3
+
+SELECT p.nome AS item_pedido, p.preco
+FROM pedido pd
+JOIN pizzas p ON pd.id_pizza = p.id_pizza
+WHERE pd.id_pedido = 3;
+
+--ex4
+
+SELECT c.nome AS cliente, SUM(p.preco) AS total_gasto
+FROM contatos c
+JOIN pedido pd ON c.id_contato = pd.id_contato
+JOIN pizzas p ON pd.id_pizza = p.id_pizza
+GROUP BY c.nome;
