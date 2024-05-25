@@ -55,6 +55,17 @@ CREATE TABLE IF NOT EXISTS funcionarios (
     FOREIGN KEY (id_supervisor) REFERENCES funcionarios(id_funcionario)
 );
 
+CREATE TABLE IF NOT EXISTS promocoes (
+    id_promocao SERIAL PRIMARY KEY,
+    nome_promocao VARCHAR(255) NOT NULL,
+    descricao TEXT,
+    desconto DECIMAL(5, 2) NOT NULL,
+    data_inicio DATE NOT NULL,
+    data_fim DATE NOT NULL,
+    id_pizza INT,
+    FOREIGN KEY (id_pizza) REFERENCES pizzas(id_pizza)
+);
+
 
 
 DROP TABLE IF EXISTS contatos;

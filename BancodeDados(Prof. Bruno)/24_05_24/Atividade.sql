@@ -102,23 +102,30 @@ LEFT JOIN
 
 SELECT 
     pedido.id_pedido,
+    pedido.id_entrega,
+    pedido.id_contato,
+    pedido.id_pizza,
+    pedido.data_pedido,
     pizzas.nome AS nome_pizza,
-    pizzas.tamanho
+    pizzas.preco AS preco_pizza
 FROM 
     pedido
-INNER JOIN 
+JOIN
     pizzas ON pedido.id_pizza = pizzas.id_pizza;
+
 
 --ex10
 
-SELECT 
-    pizzas.nome AS nome_pizza,
-    pizzas.preco,
-    promocoes.promocao
-FROM 
-    pizzas
-LEFT JOIN 
-    promocoes ON pizzas.id_pizza = promocoes.id_pizza;
+SELECT p.nome AS pizza, 
+       p.preco AS preco_pizza, 
+       pr.nome_promocao AS promocao, 
+       pr.descricao AS descricao_promocao, 
+       pr.desconto AS desconto_promocao, 
+       pr.data_inicio AS inicio_promocao, 
+       pr.data_fim AS fim_promocao
+FROM pizzas p
+LEFT JOIN promocoes pr ON p.id_pizza = pr.id_pizza;
+
 
 
 Segunda Parte (Consultas com comandos SQL básicos)
