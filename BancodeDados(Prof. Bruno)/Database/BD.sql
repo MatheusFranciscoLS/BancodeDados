@@ -66,6 +66,12 @@ CREATE TABLE IF NOT EXISTS promocoes (
     FOREIGN KEY (id_pizza) REFERENCES pizzas(id_pizza)
 );
 
+CREATE TABLE IF NOT EXISTS horario_funcionamento (
+    id_horario SERIAL PRIMARY KEY,
+    dia_semana VARCHAR(20) NOT NULL,
+    hora_abertura TIME NOT NULL,
+    hora_fechamento TIME NOT NULL
+);
 
 
 DROP TABLE IF EXISTS contatos;

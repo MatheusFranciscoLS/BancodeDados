@@ -156,3 +156,38 @@ FROM contatos c
 JOIN pedido pd ON c.id_contato = pd.id_contato
 JOIN pizzas p ON pd.id_pizza = p.id_pizza
 GROUP BY c.nome;
+
+--ex5
+
+SELECT p.nome AS sabor_pizza, COUNT(*) AS total_pedidos
+FROM pedido pd
+JOIN pizzas p ON pd.id_pizza = p.id_pizza
+GROUP BY p.nome
+ORDER BY COUNT(*) DESC;
+
+--ex6
+
+SELECT *
+FROM pizzas
+WHERE nome = 'Marguerita';
+
+--ex7
+
+SELECT *
+FROM funcionarios;
+
+--ex8
+
+SELECT *
+FROM horario_funcionamento;
+
+--ex9
+
+SELECT *
+FROM entregas
+WHERE situacao = 'Em Andamento';
+
+--ex10
+
+SELECT AVG(EXTRACT(EPOCH FROM CURRENT_TIMESTAMP - data_pedido) / 60) AS tempo_medio_espera_minutos
+FROM pedido;
