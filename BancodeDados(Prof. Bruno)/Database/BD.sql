@@ -46,6 +46,16 @@ CREATE TABLE IF NOT EXISTS status_pizzas (
     CONSTRAINT fk_pedido FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido)
 );
 
+CREATE TABLE IF NOT EXISTS funcionarios (
+    id_funcionario SERIAL PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    id_supervisor INT,
+    atribuicoes VARCHAR(100) NOT NULL,
+    areas_trabalho VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id_supervisor) REFERENCES funcionarios(id_funcionario)
+);
+
+
 
 DROP TABLE IF EXISTS contatos;
 
