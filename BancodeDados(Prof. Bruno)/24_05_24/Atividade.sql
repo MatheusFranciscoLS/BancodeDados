@@ -130,4 +130,14 @@ LEFT JOIN promocoes pr ON p.id_pizza = pr.id_pizza;
 
 Segunda Parte (Consultas com comandos SQL básicos)
 
---ex
+--ex1
+
+SELECT DISTINCT c.nome, c.email, c.cel
+FROM contatos c
+JOIN pedido p ON c.id_contato = p.id_contato;
+
+--ex2
+
+SELECT *
+FROM pedido
+WHERE data_pedido BETWEEN '2024-04-24' AND '2024-05-24';
