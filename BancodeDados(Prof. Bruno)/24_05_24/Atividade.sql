@@ -1,3 +1,7 @@
+Essas consultas devem ser realizadas utilizando INNER JOIN, JOIN, LEFT JOIN e
+RIGHT JOIN para mostrar diferentes tipos de relacionamentos entre tabelas em uma
+pizzaria.
+
 -- ex1
 
 SELECT 
@@ -28,26 +32,24 @@ INNER JOIN
 SELECT 
     funcionarios.id_funcionario,
     funcionarios.nome AS nome_funcionario,
-    atribuicoes.area_trabalho
+    atribuicoes AS atribuicao,
+    areas_trabalho AS area_trabalho
 FROM 
     funcionarios
-INNER JOIN 
-    atribuicoes ON funcionarios.id_atribuicao = atribuicoes.id_atribuicao;
 
 
 --ex4
 
 SELECT 
     pedido.id_pedido,
+    pedido.data_pedido,
     status_pizzas.status_producao,
-    status_pizzas.status_entrega,
-    funcionarios.nome AS nome_funcionario
+    status_pizzas.status_entrega
 FROM 
     pedido
-LEFT JOIN 
-    status_pizzas ON pedido.id_status = status_pizzas.id_status
-LEFT JOIN 
-    funcionarios ON pedido.id_funcionario = funcionarios.id_funcionario;
+JOIN 
+    status_pizzas ON pedido.id_pedido = status_pizzas.id_pedido;
+
 
 --ex5
 
@@ -73,26 +75,28 @@ FROM
 
 SELECT 
     pedido.id_pedido,
-    entregas.NOME AS nome_cliente,
-    entregas.EMAIL AS email_cliente,
-    entregas.CEL AS celular_cliente,
-    entregas.PIZZA AS pizza,
     pedido.data_pedido,
-    entregas.SITUACAO AS situacao_entrega
+    entregas.nome AS nome_entrega,
+    entregas.email AS email_entrega,
+    entregas.cel AS celular_entrega,
+    entregas.pizza AS pizza_entrega,
+    entregas.cadastro AS data_entrega,
+    entregas.situacao AS situacao_entrega
 FROM 
     pedido
-INNER JOIN 
-    entregas ON pedido.id_entregas = entregas.ID_ENTREGAS;
+JOIN 
+    entregas ON pedido.id_entrega = entregas.id_entrega;
 
 --ex8
 
 SELECT 
-    f1.nome AS nome_funcionario,
-    f2.nome AS nome_supervisor
+    f1.nome AS funcionario,
+    f2.nome AS supervisor
 FROM 
     funcionarios AS f1
 LEFT JOIN 
     funcionarios AS f2 ON f1.id_supervisor = f2.id_funcionario;
+
 
 --ex9
 
@@ -115,4 +119,8 @@ FROM
     pizzas
 LEFT JOIN 
     promocoes ON pizzas.id_pizza = promocoes.id_pizza;
-    
+
+
+Segunda Parte (Consultas com comandos SQL básicos)
+
+--ex
