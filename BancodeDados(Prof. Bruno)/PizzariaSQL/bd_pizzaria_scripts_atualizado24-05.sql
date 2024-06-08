@@ -78,4 +78,3 @@ DELETE FROM entregas cascade;
 -- Adicionar uma restrição de verificação para permitir apenas os valores desejados
 ALTER TABLE entregas
 ADD CONSTRAINT situacao_check CHECK (situacao IN ('entregue', 'andamento', 'cancelada'));
-

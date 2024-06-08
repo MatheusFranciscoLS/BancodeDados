@@ -1,5 +1,6 @@
 <?php
-function pdo_connect_pgsql() {
+function pdo_connect_pgsql()
+{
     $DATABASE_HOST = 'localhost';
     $DATABASE_PORT = '5432';
     $DATABASE_USER = 'postgres';
@@ -16,40 +17,41 @@ function pdo_connect_pgsql() {
         error_log('Failed to connect to database: ' . $errorDetails);
         exit('Failed to connect to database. Check error log for details. Debug: ' . $errorDetails);
     }
-    function perform_search($query, $pizza = '') {
+    function perform_search($query, $pizza = '')
+    {
         // Conexão com o banco de dados
         $pdo = pdo_connect_pgsql();
-        
+
         // Consulta SQL base
         $sql = "SELECT * FROM entregas WHERE pizza LIKE :query";
-    
+
         // Se um sabor de pizza foi selecionado, adicione uma cláusula WHERE para filtrar por sabor
         if (!empty($pizza)) {
             $sql .= " AND sabor = :pizza";
         }
-    
+
         // Preparar a consulta
         $stmt = $pdo->prepare($sql);
-    
+
         // Substituir parâmetros na consulta
         $stmt->bindValue(':query', '%' . $query . '%', PDO::PARAM_STR);
         if (!empty($pizza)) {
             $stmt->bindValue(':pizza', $pizza, PDO::PARAM_STR);
         }
-    
+
         // Executar a consulta
         $stmt->execute();
-    
+
         // Obter os resultados da consulta
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
         return $results;
     }
-    
 }
 
-function template_header($title) {
-echo <<<EOT
+function template_header($title)
+{
+    echo <<<EOT
 <!DOCTYPE html>
 <html>
 	<head>
@@ -61,21 +63,25 @@ echo <<<EOT
 	<body>
     <nav class="navtop">
     	<div>
-    		<h1> Pizzaria Dom Matheus </h1>
-            <a href="index.php"><i class="fas fa-home"></i>Inicio</a>
-    		<a href="read.php"><i class="fas fa-shopping-basket"></i>Pedidos</a>
-            <a href="ler_entregas.php"><i class="fa-solid fa-motorcycle"></i>Entregas</a>
-            <a href="promocao.php"></i>Promoções</a>
-            <a href="pesquisar.php"><i class="fa-solid fa-magnifying-glass"></i>Pesquisar</a>
-            <a href="processar_pedido.php"><i class="fa-solid fa-cart-shopping"></i>Comprar</a>
+    		 <h1>Pizzaria</h1>
+            <a href="index.php"><i class="fas fa-home"></i> Início</a>
+            <a href="horario_funcionamento.php"><i class="far fa-clock"></i> Horário</a>
+            <a href="todos_pedidos.php"><i class="fas fa-clipboard-list"></i> Todos Pedidos</a>
+            <a href="pesquisar.php"><i class="fas fa-search"></i> Pesquisar</a>
+            <a href="read.php"><i class="fas fa-shopping-basket"></i> Pedidos</a>
+            <a href="ler_entregas.php"><i class="fas fa-motorcycle"></i> Entregas</a>
+            <a href="pizzas.php"><i class="fas fa-pizza-slice"></i> Pizzas</a>
+            <a href="promocao.php"><i class="fas fa-tags"></i> Promoções</a>
+            <a href="funcionario.php"><i class="fas fa-users"></i> Funcionários</a>
+            <a href="processar_pedido.php"><i class="fas fa-cart-plus"></i> Comprar</a>
     	</div>
     </nav>
 EOT;
 }
-function template_footer() {
-echo <<<EOT
+function template_footer()
+{
+    echo <<<EOT
     </body>
 </html>
 EOT;
 }
-?>
